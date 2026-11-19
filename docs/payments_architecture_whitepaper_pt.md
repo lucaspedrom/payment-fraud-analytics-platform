@@ -1,6 +1,6 @@
-# Avaliação Técnica CloudWalk — Risk & Data Analyst I
-**Candidato:** Lucas Pedro  
-**Vaga:** Data Analyst I / Risk Analyst I  
+# Ecossistema de Pagamentos, Arquitetura de Riscos & Prevenção a Fraudes
+**Autor:** Lucas Pedro  
+**Área:** Engenharia de Dados & Inteligência de Riscos em Pagamentos  
 **Idioma:** Português (Brasil)  
 
 ---

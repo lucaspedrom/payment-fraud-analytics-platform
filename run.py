@@ -1,7 +1,3 @@
-"""
-🚀 CloudWalk Technical Assessment — Quick Launcher
-"""
-
 import os
 import sys
 import subprocess
@@ -12,7 +8,7 @@ def main():
     sys.path.insert(0, os.path.join(root_dir, "src"))
 
     print("\n" + "=" * 80)
-    print("🛡️ CLOUDWALK ANTI-FRAUD INTELLIGENCE — AUTOMATED LAUNCHER")
+    print("🛡️ ANTI-FRAUD RISK & INTELLIGENCE PLATFORM — AUTOMATED LAUNCHER")
     print("=" * 80)
 
     # 1. Database Ingestion and Integrity Verification

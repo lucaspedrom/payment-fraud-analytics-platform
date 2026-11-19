@@ -14,7 +14,7 @@ importlib.reload(views)
 
 # Page Configuration
 st.set_page_config(
-    page_title="CloudWalk Anti-Fraud Intelligence",
+    page_title="Anti-Fraud Intelligence",
     page_icon="🛡️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -180,7 +180,7 @@ LABEL_MAPS = {
 
 I18N = {
     "hub_title": "Anti-Fraud Hub" if is_en else "Antifraude Hub",
-    "case_sub": "Technical Assessment: Data Analyst I" if is_en else "Case Técnico: Data Analyst I",
+    "platform_sub": "Payments Fraud Analytics & Decision Engine" if is_en else "Inteligência de Risco & Prevenção a Fraudes em Pagamentos",
     "nav_header": "Main Menu" if is_en else "Menu Principal",
     "dataset_info": "💡 **Dataset:** 3,199 mobile transactions with real chargeback tags." if is_en else "💡 **Dataset:** 3.199 transações móveis com marcação de chargebacks reais.",
     "menu_items": [
@@ -212,7 +212,7 @@ if "selected_page" not in st.session_state:
 
 # Sidebar Navigation Header
 st.sidebar.title(I18N["hub_title"])
-st.sidebar.markdown(f"**{I18N['case_sub']}**")
+st.sidebar.markdown(f"**{I18N['platform_sub']}**")
 st.sidebar.markdown("---")
 st.sidebar.markdown(f"### {I18N['nav_header']}")
 

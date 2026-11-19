@@ -1,8 +1,3 @@
-"""
-Script Consolidado de Extração de Insights & Validação de Heurísticas Antifraude
-CloudWalk Technical Assessment — Data Analyst I
-"""
-
 import sys
 import os
 import importlib
@@ -54,7 +49,7 @@ def print_table(title: str, query: str):
 
 def main():
     print("\n" + "#"*80)
-    print("🛡️ CLOUDWALK ANTI-FRAUD INTELLIGENCE — RELATÓRIO CONSOLIDADO DE INSIGHTS")
+    print("🛡️ ANTI-FRAUD RISK & INTELLIGENCE PLATFORM — RELATÓRIO CONSOLIDADO DE INSIGHTS")
     print("#"*80)
 
     # 1. Macro Métricas

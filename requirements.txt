@@ -1,5 +1,5 @@
-# CloudWalk Technical Assessment — Dependencies
-# Data Analyst I Case & Anti-Fraud Dashboard
+# Payment Fraud Intelligence Platform — Dependencies
+# Real-Time Transaction Risk Engine & Analytics Dashboard
 
 streamlit>=1.30.0
 duckdb>=0.9.0

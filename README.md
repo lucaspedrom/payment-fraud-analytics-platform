@@ -1,7 +1,7 @@
 <div align="center">
 
-# 🛡️ CloudWalk Anti-Fraud Intelligence & Payments Platform
-### Technical Assessment — Data Analyst I & Payments Specialist
+# 🛡️ Anti-Fraud Intelligence & Payments Risk Platform
+### Real-Time Transaction Risk Engine & Behavioral Forensics Analytics
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://python.org)
 [![DuckDB](https://img.shields.io/badge/DuckDB-0.9%2B-FFF000?logo=duckdb&logoColor=black)](https://duckdb.org)
@@ -17,7 +17,7 @@
 🌐 **Language Navigation / Navegação de Idioma:**  
 [🇬🇧 **English Version (Default)**](#-english-version) &nbsp;|&nbsp; [🇧🇷 **Versão em Português**](#-versão-em-português-brazilian-portuguese)
 
-> ℹ️ *Note: This documentation starts in English as the primary assessment language, followed by the complete Brazilian Portuguese version at the end of the page.*
+> ℹ️ *Note: Full technical documentation is available in both English and Brazilian Portuguese.*
 
 ---
 
@@ -61,7 +61,7 @@ uv run streamlit run src/dashboard.py
 streamlit run src/dashboard.py
 ```
 
-> 💡 **Automated Pipeline Bootstrap:** Upon launching the dashboard or any script, the system automatically checks the integrity of `data/transactions.sqlite`. If not present, the ingestion and relational indexing from `security-test/transactional-sample.csv` execute automatically in less than **1 second**.
+> 💡 **Automated Pipeline Bootstrap:** Upon launching the dashboard or any script, the system automatically checks the integrity of `data/transactions.sqlite`. If not present, the ingestion and relational indexing from `data/raw/transactions.csv` execute automatically in less than **1 second**.
 
 ---
 
@@ -163,8 +163,8 @@ The executive dashboard (*Anti-Fraud Hub*) features **native Dark Mode**, custom
 
 ```
 ┌────────────────────────────────┐
-│ security-test/                 │
-│ transactional-sample.csv       │
+│ data/raw/                      │
+│ transactions.csv               │
 └───────────────┬────────────────┘
                 │
                 ▼ (src/ingest_data.py)
@@ -194,39 +194,36 @@ The executive dashboard (*Anti-Fraud Hub*) features **native Dark Mode**, custom
 
 ## 📁 Repository Directory Tree
 
-```
-cloudwalk-case/
+payment-fraud-analytics-platform/
 ├── README.md                                  # Comprehensive bilingual documentation
-├── Lucas Pedro - Data Analyst Case Solution.md # Full case solution & executive report (EN)
-├── Lucas Pedro - Data Analyst Case Solution (PT).md # Full case solution & executive report (PT)
-├── requirements.txt                           # Standard pip package dependencies
+├── requirements.txt                           # Core dependencies
 ├── pyproject.toml                             # Modern Python packaging configuration (uv/pip)
-├── run.py                                     # 1-Click launcher script
+├── run.py                                     # 1-Click automated application launcher
 │
 ├── data/
-│   └── transactions.sqlite                    # Persistent indexed SQLite database
+│   ├── raw/                                   # Raw transactional dataset (3,199 records)
+│   │   └── transactions.csv
+│   └── transactions.sqlite                    # Persistent indexed SQLite relational database
 │
-├── security-test/
-│   ├── transactional-sample.csv               # Raw transaction dataset (3,199 rows)
-│   ├── software-engineer-payments.md          # Payment system reference document
-│   └── Data_Analyst_I_Case_External.pdf       # Original technical case challenge
+├── docs/
+│   ├── payments_architecture_whitepaper_en.md # Payments ecosystem & risk whitepaper (EN)
+│   └── payments_architecture_whitepaper_pt.md # Payments ecosystem & risk whitepaper (PT)
 │
 └── src/
     ├── ingest_data.py                         # Idempotent CSV -> SQLite ingestion + indexing
-    ├── views.py                               # 15+ DuckDB analytical VIEW definitions
-    ├── dashboard.py                           # Complete Streamlit Dashboard (6 tabs + I18n)
-    └── extract_insights.py                    # Terminal-based heuristic validator & insights extractor
-```
+    ├── views.py                               # 15+ analytical DuckDB VIEW definitions
+    ├── dashboard.py                           # Full interactive Streamlit Dashboard (Dark Mode + I18n)
+    └── extract_insights.py                    # Terminal CLI heuristics & insights extractor
 
 ---
 
-## 📚 Theoretical Payments Answers (Summary)
+## 📚 Payments Architecture & Industry Whitepapers
 
-Complete technical essays and answers are available in [`Lucas Pedro - Data Analyst Case Solution.md`](Lucas%20Pedro%20-%20Data%20Analyst%20Case%20Solution.md) (or the Portuguese version [`Lucas Pedro - Data Analyst Case Solution (PT).md`](Lucas%20Pedro%20-%20Data%20Analyst%20Case%20Solution%20(PT).md)) and inside **Tab 6 of the Dashboard**:
+Comprehensive technical whitepapers detailing payment processing mechanics, acquiring infrastructure, and chargeback risk management are available in [`docs/payments_architecture_whitepaper_en.md`](docs/payments_architecture_whitepaper_en.md) (Portuguese version: [`docs/payments_architecture_whitepaper_pt.md`](docs/payments_architecture_whitepaper_pt.md)):
 
-* **Question 1 (Payment Industry Flow):** Detailed step-by-step description of real-time dual-message authorization (Cardholder $\leftrightarrow$ Merchant $\leftrightarrow$ Gateway/PayFac $\leftrightarrow$ Acquirer $\leftrightarrow$ Scheme $\leftrightarrow$ Issuer) and financial clearing & settlement, including MDR breakdown (*Interchange Fee*, Scheme Assessment, and Acquirer Margin).
-* **Question 2 (Acquirer vs Sub-acquirer vs Gateway):** Technical and operational comparison highlighting risk underwriting, centralized settlement (PayFac / Master Merchant model), and cryptographic API routing (Gateways).
-* **Question 3 (Chargeback vs Refund & Acquirer Risk):** Formal distinction between commercial mutual refunds and fraud chargebacks, alongside regulatory risks (Visa VAMP / Mastercard ECP programs) and merchant insolvency credit risks.
+* **Payment Flow Architecture:** Detailed analysis of real-time dual-message authorization (Cardholder $\leftrightarrow$ Merchant $\leftrightarrow$ Gateway/PayFac $\leftrightarrow$ Acquirer $\leftrightarrow$ Scheme $\leftrightarrow$ Issuer) and financial clearing & settlement, including MDR breakdown (*Interchange Fee*, Scheme Assessment, and Acquirer Margin).
+* **Acquiring Taxonomy (Acquirer vs Sub-acquirer vs Gateway):** Technical and operational comparison highlighting underwriting models, centralized settlement (PayFac / Master Merchant framework), and cryptographic API routing (Gateways).
+* **Risk Dynamics & Scheme Compliance:** Formal distinction between voluntary commercial refunds and fraud-driven chargebacks, regulatory monitoring thresholds (Visa VAMP / Mastercard ECP), and merchant credit exposure.
 
 ---
 ---
@@ -371,8 +368,8 @@ O dashboard executivo (*Antifraude Hub*) possui **Dark Mode nativo**, cartões c
 
 ```
 ┌────────────────────────────────┐
-│ security-test/                 │
-│ transactional-sample.csv       │
+│ data/raw/                      │
+│ transactions.csv               │
 └───────────────┬────────────────┘
                 │
                 ▼ (src/ingest_data.py)
@@ -402,44 +399,42 @@ O dashboard executivo (*Antifraude Hub*) possui **Dark Mode nativo**, cartões c
 
 ## 📁 Estrutura de Arquivos do Repositório
 
-```
-cloudwalk-case/
-├── README.md                                  # Documentação bilíngue completa
-├── Lucas Pedro - Data Analyst Case Solution.md # Resolução completa do case e relatório executivo (EN)
-├── Lucas Pedro - Data Analyst Case Solution (PT).md # Resolução completa do case e relatório executivo (PT)
-├── requirements.txt                           # Dependências de pacotes padrão pip
-├── pyproject.toml                             # Configuração moderna de empacotamento Python (uv/pip)
-├── run.py                                     # Script de inicialização automática 1-clique
+payment-fraud-analytics-platform/
+├── README.md                                  # Documentação executiva bilíngue
+├── requirements.txt                           # Dependências do ecossistema
+├── pyproject.toml                             # Configuração moderna de empacotamento Python
+├── run.py                                     # Launcher automatizado de 1 clique
 │
 ├── data/
-│   └── transactions.sqlite                    # Banco de dados SQLite persistente indexado
+│   ├── raw/                                   # Dataset transacional bruto (3.199 registros)
+│   │   └── transactions.csv
+│   └── transactions.sqlite                    # Banco relacional persistente indexado
 │
-├── security-test/
-│   ├── transactional-sample.csv               # Base de dados transacional bruta (3.199 linhas)
-│   ├── software-engineer-payments.md          # Documento de referência do sistema de pagamentos
-│   └── Data_Analyst_I_Case_External.pdf       # Documento original com o desafio técnico
+├── docs/
+│   ├── payments_architecture_whitepaper_en.md # Whitepaper de arquitetura de pagamentos e riscos (EN)
+│   └── payments_architecture_whitepaper_pt.md # Whitepaper de arquitetura de pagamentos e riscos (PT)
 │
 └── src/
     ├── ingest_data.py                         # Ingestão idempotente CSV -> SQLite + Indexação
-    ├── views.py                               # Definição de 15+ VIEWs analíticas em DuckDB
-    ├── dashboard.py                           # Dashboard Streamlit completo (6 abas + I18n)
-    └── extract_insights.py                    # Validador de heurísticas e extrator de insights em CLI
-```
+    ├── views.py                               # 15+ VIEWs analíticas em DuckDB
+    ├── dashboard.py                           # Dashboard interativo Streamlit (Dark Mode + I18n)
+    └── extract_insights.py                    # Extrator de heurísticas via terminal CLI
 
 ---
 
-## 📚 Resumo das Respostas Teóricas de Pagamentos
+## 📚 Whitepapers de Arquitetura de Pagamentos & Riscos
 
-As análises técnicas completas e relatórios executivos estão documentados em [`Lucas Pedro - Data Analyst Case Solution (PT).md`](Lucas%20Pedro%20-%20Data%20Analyst%20Case%20Solution%20(PT).md) (ou versão em inglês [`Lucas Pedro - Data Analyst Case Solution.md`](Lucas%20Pedro%20-%20Data%20Analyst%20Case%20Solution.md)) e na **Aba 6 do Dashboard**:
+Análises técnicas aprofundadas sobre o ecossistema adquirente, dinâmicas de liquidação e governança de chargebacks estão documentadas em [`docs/payments_architecture_whitepaper_pt.md`](docs/payments_architecture_whitepaper_pt.md) (versão em inglês: [`docs/payments_architecture_whitepaper_en.md`](docs/payments_architecture_whitepaper_en.md)):
 
-* **Pergunta 1 (Fluxo da Indústria de Pagamentos):** Descrição detalhada da autorização em tempo real (*dual-message*) entre Portador $\leftrightarrow$ Lojista $\leftrightarrow$ Gateway/PayFac $\leftrightarrow$ Adquirente $\leftrightarrow$ Bandeira $\leftrightarrow$ Emissor e do processo de liquidação (*Clearing & Settlement*), incluindo o detalhamento e repartição do MDR (*Taxa de Intercâmbio*, Taxa da Bandeira e Margem de Adquirência).
-* **Pergunta 2 (Adquirente vs Subadquirente vs Gateway):** Comparação técnica e operacional enfatizando subscrição de risco, liquidação centralizada (*modelo PayFac / Master Merchant*) e roteamento de APIs criptografadas (*Gateways*).
-* **Pergunta 3 (Chargeback vs Cancelamento & Risco da Adquirente):** Distinção formal entre cancelamento comercial voluntário e disputa por fraude (*Chargeback*), além dos riscos regulatórios (Programas Visa VAMP / Mastercard ECP) e risco de crédito por insolvência de lojistas.
+* **Arquitetura do Fluxo de Pagamentos:** Análise detalhada da autorização em tempo real (*dual-message*) entre Portador $\leftrightarrow$ Lojista $\leftrightarrow$ Gateway/PayFac $\leftrightarrow$ Adquirente $\leftrightarrow$ Bandeira $\leftrightarrow$ Emissor e do ciclo de compensação e liquidação (*Clearing & Settlement*), detalhando a decomposição do MDR (*Taxa de Intercâmbio*, Tarifa de Bandeira e Margem de Adquirência).
+* **Taxonomia de Adquirência (Adquirente vs Subadquirente vs Gateway):** Comparação técnica e operacional enfatizando subscrição de risco, liquidação centralizada (*modelo PayFac / Master Merchant*) e roteamento de APIs criptografadas (*Gateways*).
+* **Dinâmica de Riscos & Conformidade de Bandeiras:** Distinção formal entre cancelamento comercial voluntário e disputa por fraude (*Chargeback*), programas de monitoramento regulatório de bandeiras (Visa VAMP / Mastercard ECP) e gestão de risco de crédito por insolvência de lojistas.
 
 ---
 
 <div align="center">
-Desenvolvido para o <b>Processo Seletivo CloudWalk — Data Analyst I</b>.
-Documentação desenvolvida com auxílio de Inteligência Artificial.
+Desenvolvido por <b>Lucas Pedro</b> · Especialista em Dados & Inteligência de Riscos em Pagamentos
+<br>
+<i>Payment Transaction Risk Engine & Behavioral Forensics Analytics Platform</i>
 </div>
 
